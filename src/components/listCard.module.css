@@ -1,0 +1,59 @@
+.cardContainer {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  background-color: var(--gray-800);
+  align-items: center;
+  border-radius: 0.5rem;
+  border: 1px solid var(--gray-700);
+}
+
+.cardContent {
+  flex-grow: 1;
+  font-size: 0.9rem;
+}
+
+.deleteButton {
+  background-color: transparent;
+  font-size: 1.2rem;
+  color: var(--gray-400);
+  padding: 0;
+  margin-right: 0.5rem;
+  line-height: 1.2rem;
+  padding: 0.25rem;
+  transition: 0.4s;
+}
+
+.deleteButton:hover {
+  outline: none;
+  border: none;
+  background-color: var(--gray-700);
+  border: 1px solid var(--gray-600);
+}
+
+.completeButton {
+  width: 1rem;
+  height: 1rem;
+  padding: 0;
+  background-color: transparent;
+  border-radius: 50%;
+  border: 1px solid var(--blue-500);
+}
+
+.completeButtonChecked {
+  width: 1rem;
+  height: 1rem;
+  padding: 0;
+  background-color: var(--purple-700);
+  border-radius: 50%;
+  border: 1px solid var(--purple-700);
+  cursor: default;
+  /* pointer-events: none; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bolder;
+}

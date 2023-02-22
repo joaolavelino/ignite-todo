@@ -1,0 +1,13 @@
+.formContainer {
+  width: 100%;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.formButton {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+  font-size: 0.75rem;
+  padding: 0.5rem;
+}
