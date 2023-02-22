@@ -1,16 +1,13 @@
 import { ClipboardText } from "phosphor-react";
 import React from "react";
-import { TodoType } from "../models";
+import { useTodo } from "../reducers/todoReducer";
 import styles from "./list.module.css";
 import ListCard from "./ListCard";
 
-interface ListProps {
-  list: TodoType[];
-  completeFn: (id: string) => void;
-  deleteFn: (id: string) => void;
-}
+const List: React.FC = () => {
+  const { state } = useTodo();
+  const list = state.todoList;
 
-const List: React.FC<ListProps> = ({ list, completeFn, deleteFn }) => {
   return (
     <section className={styles.listContainer}>
       <div className={styles.listHeader}>
@@ -27,14 +24,7 @@ const List: React.FC<ListProps> = ({ list, completeFn, deleteFn }) => {
       </div>
       <div className={styles.listBody}>
         {list.length > 0 &&
-          list?.map((todo) => (
-            <ListCard
-              todo={todo}
-              key={todo.id}
-              completeFn={completeFn}
-              deleteFn={deleteFn}
-            />
-          ))}
+          list?.map((todo) => <ListCard todo={todo} key={todo.id} />)}
         {list.length == 0 && (
           <div className={styles.emptyList}>
             <ClipboardText size={60} weight="light" />

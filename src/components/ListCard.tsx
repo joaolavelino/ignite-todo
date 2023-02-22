@@ -1,21 +1,20 @@
 import { Check, Trash } from "phosphor-react";
 import React from "react";
 import { TodoType } from "../models";
+import { useTodo } from "../reducers/todoReducer";
 import styles from "./listCard.module.css";
 
 interface ListCardProps {
   todo: TodoType;
-  completeFn: (id: string) => void;
-  deleteFn: (id: string) => void;
 }
 
-const ListCard: React.FC<ListCardProps> = ({ todo, completeFn, deleteFn }) => {
+const ListCard: React.FC<ListCardProps> = ({ todo }) => {
+  const { completeTodo, removeTodo } = useTodo();
   return (
     <div className={styles.cardContainer}>
       <button
         type="button"
-        onClick={() => completeFn(todo.id)}
-        // disabled={todo.completed}
+        onClick={() => completeTodo(todo.id)}
         className={
           todo.completed ? styles.completeButtonChecked : styles.completeButton
         }
@@ -26,7 +25,7 @@ const ListCard: React.FC<ListCardProps> = ({ todo, completeFn, deleteFn }) => {
       <button
         className={styles.deleteButton}
         type="button"
-        onClick={() => deleteFn(todo.id)}
+        onClick={() => removeTodo(todo.id)}
       >
         <Trash weight="light" />
       </button>
