@@ -1,7 +1,6 @@
-import { useReducer } from "react";
+import { useReducer, useEffect } from "react";
 import { TodoType } from "../models";
 import { v4 as uuidv4 } from "uuid";
-import "./styles/global.css";
 
 export function useTodo() {
   enum TodoActionsKind {
@@ -56,8 +55,9 @@ export function useTodo() {
     dispatch({ type: TodoActionsKind.COMPLETE, payload: id });
   };
 
+  const taskList = state.todoList;
   return {
-    state,
+    taskList,
     addTodo,
     removeTodo,
     completeTodo,

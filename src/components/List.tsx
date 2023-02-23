@@ -5,12 +5,12 @@ import styles from "./list.module.css";
 import ListCard from "./ListCard";
 
 const List: React.FC = () => {
-  const { state } = useTodo();
-  const list = state.todoList;
+  const { taskList: list } = useTodo();
 
   return (
     <section className={styles.listContainer}>
       <div className={styles.listHeader}>
+        {list.length}
         <div className={styles.listHeaderPart}>
           <span className={styles.listHeaderCreated}>Tasks created</span>
           <span className={styles.listHeaderQuantity}>{list.length}</span>
@@ -23,8 +23,9 @@ const List: React.FC = () => {
         </div>
       </div>
       <div className={styles.listBody}>
-        {list.length > 0 &&
-          list?.map((todo) => <ListCard todo={todo} key={todo.id} />)}
+        {list?.map((todo) => (
+          <ListCard todo={todo} key={todo.id} />
+        ))}
         {list.length == 0 && (
           <div className={styles.emptyList}>
             <ClipboardText size={60} weight="light" />
