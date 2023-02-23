@@ -3,14 +3,16 @@ import { PlusCircle } from "phosphor-react";
 import styles from "./createTodoForm.module.css";
 import { useTodo } from "../reducers/todoReducer";
 
-const CreateTodoForm: React.FC = () => {
-  const [name, setName] = useState<string>("");
+interface CreateTodoFormProps {
+  addFn: (name: string) => void;
+}
 
-  const { addTodo } = useTodo();
+const CreateTodoForm: React.FC<CreateTodoFormProps> = ({ addFn }) => {
+  const [name, setName] = useState<string>("");
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    addTodo(name);
+    addFn(name);
     setName("");
   };
 

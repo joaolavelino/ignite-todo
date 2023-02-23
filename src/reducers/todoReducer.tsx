@@ -55,9 +55,8 @@ export function useTodo() {
     dispatch({ type: TodoActionsKind.COMPLETE, payload: id });
   };
 
-  const taskList = state.todoList;
   return {
-    taskList,
+    state,
     addTodo,
     removeTodo,
     completeTodo,
